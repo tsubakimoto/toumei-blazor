@@ -1,7 +1,15 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="row">
+  <form class="form-inline mx-auto">
+    <div class="form-group mr-2">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">#</div>
+        </div>
+        <input type="text" id="color" class="form-control" placeholder="FFFFFF" maxlength="6">
+      </div>
+    </div>
+    <button id="submit" class="btn btn-primary">Get RGBA</button>
+  </form>
+</div>

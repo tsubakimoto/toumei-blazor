@@ -6,6 +6,6 @@ namespace toumei.Models
     {
         [Required]
         [StringLength(6)]
-        public string Color { get; set; } = "FFFFFF";
+        public string Color { get; set; }
     }
 }

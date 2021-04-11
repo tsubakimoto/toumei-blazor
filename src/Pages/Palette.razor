@@ -1,0 +1,50 @@
+@page "/palette"
+@inject IJSRuntime JS
+
+<div id="box1" class="row box" data-alpha="0.1">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box2" class="row box" data-alpha="0.2">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box3" class="row box" data-alpha="0.3">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box4" class="row box" data-alpha="0.4">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box5" class="row box" data-alpha="0.5">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box6" class="row box" data-alpha="0.6">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box7" class="row box" data-alpha="0.7">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box8" class="row box" data-alpha="0.8">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box9" class="row box" data-alpha="0.9">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+<div id="box10" class="row box" data-alpha="1.0">
+  <div class="col-md-3 offset-md-3 text-center hex"></div>
+  <div class="text-center rgba"></div>
+</div>
+
+@code {
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    await JS.InvokeVoidAsync("CalcColor");
+}
+}

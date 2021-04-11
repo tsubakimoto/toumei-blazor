@@ -1,15 +1,35 @@
 ﻿@page "/"
 
 <div class="row">
-  <form class="form-inline mx-auto">
-    <div class="form-group mr-2">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">#</div>
-        </div>
-        <input type="text" id="color" class="form-control" placeholder="FFFFFF" maxlength="6">
+  <EditForm Model="@colorModel" OnValidSubmit="HandleSubmit" class="form-inline mx-auto">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="input-group mr-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text">#</div>
       </div>
+      <InputText id="color" class="form-control" @bind-Value="colorModel.Color" placeholder="FFFFFF" maxlength="6" />
     </div>
-    <button id="submit" class="btn btn-primary">Get RGBA</button>
-  </form>
+
+    <button type="submit" class="btn btn-primary">Get RGBA</button>
+  </EditForm>
 </div>
+
+@code {
+  private ColorModel colorModel = new ColorModel();
+  private EditContext editContext;
+
+  protected override void OnInitialized()
+  {
+    editContext = new EditContext(colorModel);
+  }
+
+  private void HandleSubmit()
+  {
+    if (!editContext.Validate())
+    {
+      return;
+    }
+  }
+}

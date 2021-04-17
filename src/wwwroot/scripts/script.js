@@ -1,11 +1,4 @@
 /*
- * ベースのURLを取得する
- */
-function GetBaseUrl() {
-  return $.url().attr('directory');
-}
-
-/*
  * 16進数をrgba値に整形する
  */
 function ConvertToRgbaColor(hex, alpha) {
@@ -77,8 +70,7 @@ function ConvertToHex(dec, alpha) {
 /*
  * 色計算を行う
  */
-function CalcColor() {
-  var param = $.url().attr('fragment');
+function CalcColor(param) {
   for (var i = 1; i <= 10; i++) {
     var box = $('#box' + i);
     var color = ConvertToRgbaColor(param, parseFloat(box.data('alpha')));

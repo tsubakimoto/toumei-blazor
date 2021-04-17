@@ -1,5 +1,6 @@
 @page "/palette"
 @inject IJSRuntime JS
+@inject NavigationManager NavManager
 
 <div id="box1" class="row box" data-alpha="0.1">
   <div class="col-md-3 offset-md-3 text-center hex"></div>
@@ -43,8 +44,15 @@
 </div>
 
 @code {
+  private string color = string.Empty;
+
+  protected override void OnInitialized()
+  {
+    color = NavManager.QueryString("color");
+  }
+
   protected override async Task OnAfterRenderAsync(bool firstRender)
   {
-    await JS.InvokeVoidAsync("CalcColor");
+    await JS.InvokeVoidAsync("CalcColor", color);
   }
 }

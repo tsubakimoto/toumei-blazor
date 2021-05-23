@@ -19,6 +19,13 @@ namespace toumei
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+            // https://docs.microsoft.com/ja-jp/aspnet/core/blazor/security/webassembly/standalone-with-azure-active-directory-b2c?view=aspnetcore-5.0
+            builder.Services.AddMsalAuthentication(options =>
+            {
+                builder.Configuration.Bind("AzureAdB2C", options.ProviderOptions.Authentication);
+                options.ProviderOptions.LoginMode = "redirect";
+            });
+
             await builder.Build().RunAsync();
         }
     }
